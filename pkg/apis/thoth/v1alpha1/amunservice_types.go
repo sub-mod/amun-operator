@@ -13,7 +13,25 @@ type AmunServiceSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "operator-sdk generate k8s" to regenerate code after modifying this file
 	// Add custom validation using kubebuilder tags: https://book-v1.book.kubebuilder.io/beyond_basics/generating_crd.html
+
+	Image string `json:"image"`
+	Script    string `json:"script"`
+	Packages   string `json:"packages"`
+
+
+	//cpu/memory
+	HardwareLabels map[string]string `json:"hardwareLabels,omitempty"`
+	BuildResource Resources `json:"buildResources,omitempty"`
+	RunResource Resources `json:"runResources,omitempty"`
 }
+
+type Resources struct {
+	CpuLimit       string `json:"cpuLimit"`
+	MemoryLimit    string `json:"memoryLimit"`
+	CpuRequests    string `json:"cpuRequests"`
+	MemoryRequests string `json:"memoryRequests"`
+}
+
 
 // AmunServiceStatus defines the observed state of AmunService
 // +k8s:openapi-gen=true
@@ -21,6 +39,7 @@ type AmunServiceStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "operator-sdk generate k8s" to regenerate code after modifying this file
 	// Add custom validation using kubebuilder tags: https://book-v1.book.kubebuilder.io/beyond_basics/generating_crd.html
+
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -29,6 +29,65 @@ spec:
           type: object
         spec:
           type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                image:
+                  description: Base Image for BuildConfig.
+                  type: string
+                script:
+                  type: string
+                packages:
+                  description: List of
+                  items:
+                    type: string
+                  type: array
+                hardwareLabels:
+                  description: The labels to identify nodes with hardware
+                  type: object
+                runResources:
+                  description: BuildResources define the resources for Docker Build.
+                  properties:
+                    cpuLimit:
+                      description: The maximum cpu requested.
+                      type: string
+                    memoryLimit:
+                      description: The maximum memory requested.
+                      type: string
+                    CpuRequests:
+                      description: The cpu requested.
+                      type: string
+                    MemoryRequests:
+                      description: The memory requested.
+                      type: string
+                  required:
+                    - cpuLimit
+                    - memoryLimit
+                    - CpuRequests
+                    - MemoryRequests
+                  type: object
+                buildResources:
+                  description: BuildResources define the resources for Docker Build.
+                  properties:
+                    cpuLimit:
+                      description: The maximum cpu requested.
+                      type: string
+                    memoryLimit:
+                      description: The maximum memory requested.
+                      type: string
+                    CpuRequests:
+                      description: The cpu requested.
+                      type: string
+                    MemoryRequests:
+                      description: The memory requested.
+                      type: string
+                  required:
+                    - cpuLimit
+                    - memoryLimit
+                    - CpuRequests
+                    - MemoryRequests
+                  type: object
         status:
           type: object
   version: v1alpha1

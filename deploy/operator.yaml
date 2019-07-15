@@ -16,7 +16,7 @@ spec:
       containers:
         - name: amun-operator
           # Replace this with the built image name
-          image: REPLACE_IMAGE
+          image: quay.io/sub_mod/amun-operator:latest
           command:
           - amun-operator
           imagePullPolicy: Always
